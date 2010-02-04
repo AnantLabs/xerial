@@ -12,15 +12,15 @@
 
 -paragraph: Silk Features
 Notable features of Silk include:
--item: Forest data model:
+-item: Forest data model
 Silk uses the forest data model, a sequence of trees. This is a natural extension of tree-structured data formats for representing a list of data objects. 
--item: Human-friendly syntax:
+-item: Human-friendly syntax
 Silke uses indentation via spaces for nesting data structures; no need exists to wrap text data with tags. In addition, you can omit double quotations to describe text data, which are mandatory in JSON.
--item: Space-efficient format:
+-item: Space-efficient format
 Tab-separated data or comma-separated values (CSV) can be embedded in Silk at any hierarchical position. XML and JSON have no support for such compact data representation.
--item: Import function:
+-item: Import function
 Several data files (e.g. another Silk file, tab-separated data, CSV, text or binary files, etc.) can be embedded in a Silk file to compose a large data set at ease.
--item: One-liner format:
+-item: One-liner format
  Silk data can be processed line-by-line, so it is very familiar with standard text-processing tools, such as grep, awk, Perl, Ruby, etc. This feature is also suited to parallel data processing. 
 
 -sub section: Situations where Silk is useful 
@@ -138,7 +138,7 @@ Indentation before hyphen ('-') represents tree node depth. Only space character
 
 Alternatively, you can write the same data using a compact format:
 --code
--book(id:1, title: Database Management Systems, isbn:0071230572, year:2002)
+-book(id:1, title:Database Management Systems, isbn:0071230572, year:2002)
 -book(id:2, title: Compilers: Second Edition, isbn:0321547985, year:2007)
 --
 
@@ -384,7 +384,7 @@ NM_152486	chr1	+	850983	869824
  855397     855579
 --
 
--paragraph: Alternative Structure
+-paragraph: Reducing redundancies in the table-structured data
 
 --code
 -track: refseq genes
@@ -392,12 +392,15 @@ NM_152486	chr1	+	850983	869824
  -sequence: hg19
  -gene(name, chr, strand, start, end, cds(start, end)*, exon(start, end)*)|
   ->strand: +
-  ->chr:chr1
+   ->chr:chr1
 NM_001005277  357521  358460	[[357521,358460]]	[[357521,358460]]
 NM_152486     850983  869824	[[851184,869396]]	[[850983,851043],[851164,851256],[855397,855579]]
-  ->chr:chr2
+   ->chr:chr2
 NM_001005277  357521  358460	[[357521,358460]]	[[357521,358460]]
 NM_152486     850983  869824	[[851184,869396]]	[[850983,851043],[851164,851256],[855397,855579]]
+# reset the node value binding of the table schema
+  -> 
+NM_001005277	chr1	-	 357521  358460	[[357521,358460]]	[[357521,358460]]
 --
 
 
@@ -571,44 +574,42 @@ If you have to use negative values, use "--" notation to switch parsing mode for
 -section: Symbol Summary
 
 --table
--th
- -td: Symbol
- -td: Description
--tr
- -td: "%silk(version:1.0)"
- -td: preamble 
--tr
- -td: "#"
- -td: comment line
--tr
- -td: "@function(args, ...)"
- -td: function
--tr
- -td: "-(node name):(node value)"
- -td: node name and node value in a line
--tr
- -td: "-(node name)>" 
- -td: followed by multi-line node values with white spaces aroung lines trimmed.
--tr
- -td: "--(node name)"
- -td: block start: followed by multi-line node values preserving white spaces
--tr
- -td: "--"
- -td: block end
--tr
- -td: "-(node name) (table schema)|" 
- -td: followed by tab-separated data (table schema)
--tr
- -td: "-(node name)*"
- -td: follwed by CSV data 
--tr
- -td: "--(node name) (table schema)|" 
- -td: followed by tab-separated data  allowing "-/#/@" in the head of the data
--tr
- -td: "--(node name)*"
- -td: follwed by CSV data allowing "-/#/@" in the head of the data
-
-
+-header
+ -col: Symbol
+ -col: Description
+-row
+ -col: "%silk(version:1.0)"
+ -col: preamble 
+-row
+ -col: "#"
+ -col: comment line
+-row
+ -col: "@function(args, ...)"
+ -col: function
+-row
+ -col: "-(node name):(node value)"
+ -col: node name and node value in a line
+-row
+ -col: "-(node name)>" 
+ -col: followed by multi-line node values with white spaces aroung lines rowimmed.
+-row
+ -col: "--(node name)"
+ -col: block start: followed by multi-line node values preserving white spaces
+-row
+ -col: "--"
+ -col: block end
+-row
+ -col: "-(node name) (table schema)|" 
+ -col: followed by tab-separated data (table schema)
+-row
+ -col: "-(node name)*"
+ -col: follwed by CSV data 
+-row
+ -col: "--(node name) (table schema)|" 
+ -col: followed by tab-separated data  allowing "-/#/@" in the head of the data
+-row
+ -col: "--(node name)*"
+ -col: follwed by CSV data allowing "-/#/@" in the head of the data
 --
 
 
@@ -937,6 +938,13 @@ function: silk -> silk
 -person(id:1, dept:LA)
 -person(id:2, dept:SEA)
 -person(id:3, dept:LA)
+
+-A
+-A(B, C)
+-A(B, C, D)
+-A(id:1, dept:2)
+-A(id:1, dept:2, office:3)
+-A(id[int]:1, dept[string]:2, file[bin]:3)
 --
 
 --

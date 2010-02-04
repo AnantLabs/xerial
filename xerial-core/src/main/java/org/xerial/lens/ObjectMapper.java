@@ -176,8 +176,18 @@ public class ObjectMapper {
 
             }
 
+<<<<<<< local
+            if (lens.hasPropertySetter()) {
+                RelationSetter propSetter = lens.getPropertySetter();
+=======
             // binding rule for the property setter
+>>>>>>> other
 
+<<<<<<< local
+            }
+
+=======
+>>>>>>> other
         }
     }
 
@@ -203,8 +213,8 @@ public class ObjectMapper {
      * 
      */
     private static class RelationBinder implements Binder {
-        final ObjectLens lens;
-        final RelationSetter setter;
+        private final ObjectLens lens;
+        private final RelationSetter setter;
 
         public RelationBinder(ObjectLens lens, RelationSetter setter) {
             this.lens = lens;
@@ -241,6 +251,30 @@ public class ObjectMapper {
                 String textValue) throws XerialException {
             throw new XerialError(XerialErrorCode.UNSUPPORTED);
         }
+    }
+
+    private static class PropertyBinder implements Binder {
+
+        private final ObjectLens lens;
+        private final RelationSetter setter;
+
+        public PropertyBinder(ObjectLens lens, RelationSetter setter) {
+            this.lens = lens;
+            this.setter = setter;
+        }
+
+        public void bind(MappingProcess proc, Schema schema, Node coreNode, Node attributeNode)
+                throws XerialException {
+        // TODO Auto-generated method stub
+
+        }
+
+        public void bindText(MappingProcess proc, Schema schema, Node coreNode, Node textNode,
+                String textValue) throws XerialException {
+        // TODO Auto-generated method stub
+
+        }
+
     }
 
     /**

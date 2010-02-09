@@ -1,0 +1,18 @@
+{
+  "gene":
+	[
+	 {"id":1, "chr":"chr1", "name":"gene1"},
+	 {"id":2, "chr":"chr2", "name":"gene2"}
+	]
+ }
+
+{
+  "gene":
+	[
+	 {"chr":"chr1", "id":1, "name":"gene1"},
+	 {"chr":"chr1", "id":2, "name":"gene2"}
+	]
+ }
+
+{"gene":{"chr":"chr1", "id":4, "name":"gene4"}}
+

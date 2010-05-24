@@ -1,0 +1,2 @@
+-gene(id, chr, name)|
+@import(gene.tab)

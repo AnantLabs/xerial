@@ -1,0 +1,15 @@
+# utgb config format
+-config(version:1.0)
+  -project name: utgb-shell
+  -version: 2.0
+  -group: utgb
+# database connection settings
+-database(dbms:sqlite, scope: debug)
+  -address: db/sample.db
+-gene(id, start, end)|
+g1	10	20000
+g2	1000	30000
+-gene(id:g1)
+ -sequence>
+ACCGGCCGCCC
+CCGCAGGGAAA

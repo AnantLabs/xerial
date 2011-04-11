@@ -1,0 +1,60 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <artifactId>xerial-project</artifactId>
+    <groupId>org.xerial</groupId>
+    <version>2.0.6-SNAPSHOT</version>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.xerial</groupId>
+  <artifactId>xerial-xml</artifactId>
+  <name>Xerial XML Library</name>
+  <version>2.0.6-SNAPSHOT</version>
+  <description>XML Parser/Indexing library.</description>
+
+  <scm>
+    <connection>scm:hg:https://core.xerial.googlecode.com/hg/</connection>
+    <developerConnection>scm:hg:default</developerConnection>
+  </scm>
+
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.xerial.maven</groupId>
+        <artifactId>maven-antlr-plugin</artifactId>
+	    <version>1.8</version>
+        <executions>
+          <execution>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+        </configuration>
+      </plugin>
+    </plugins>
+ </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.xerial</groupId>
+      <artifactId>xerial-core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.antlr</groupId>
+      <artifactId>antlr</artifactId>
+      <version>3.2</version>
+    </dependency>
+    <dependency>
+      <groupId>xpp3</groupId>
+      <artifactId>xpp3</artifactId>
+      <version>1.1.4c</version>
+    </dependency>
+
+  </dependencies>
+</project>

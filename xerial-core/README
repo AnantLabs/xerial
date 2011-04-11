@@ -1,0 +1,59 @@
+
+= How to build 
+
+> mvn compile
+
+> mvn package
+
+
+= How to sync with central repository
+> hg push
+
+
+= Development cycle
+* Create a branch for the target task (ticket):
+> hg branch feature1 
+(do come changes)
+> hg commit 
+
+* Merge the named branch
+Go back to the default branch:
+> hg update default 
+> hg merge feature1
+> hg commit 
+
+
+
+
+
+
+= Mercurial Setup
+== Windows
+> Install Mercurial for Windows (and set PATH to the c:\Program Files\Mercurial)
+
+
+= Server Setup
+* mercurial-server
+* hgwebdir.cgi
+
+Because of the problem reported in http://old.nabble.com/hg-1.0-exits-with-abort:-Error-td19021833.html, we cannot use digest authentication. 
+Basic authentication + SSL is used. 
+
+
+= Using Third-party JAR files
+
+* How to deploy a new jar file to our maven repository
+mvn deploy:deploy-file -Dfile=antlr/antlr-3.0b7.jar -DgroupId=org.antlr -DartifactId=antlr -Dversion=3.0b7 -Dpackaging=jar -DrepositoryId=xerial -Durl=scp://www.xerial.org/home/web/xerial.org/maven/artifact
+
+
+= Project Release Steps
+
+$ mvn release:perform
+$ hg push (google)
+$ mvn release:perform
+
+
+== Release to sourceforge.jp
+(after releasing a project to xerial.org)
+$ hg push (google)
+$ mvn release:perform -Darguments="-P sourceforge" -Dtag="xerial-project-(version)"

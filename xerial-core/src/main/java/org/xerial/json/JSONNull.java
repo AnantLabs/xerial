@@ -16,60 +16,32 @@
 //--------------------------------------
 // XerialJ Project
 //
-// JSONBoolean.java
+// JSONNull.java
 // Since: Apr 4, 2007
 //
-// $URL: http://dev.utgenome.org/svn/utgb/trunk/common/src/org/utgenome/json/JSONBoolean.java $ 
+// $URL: http://dev.utgenome.org/svn/utgb/trunk/common/src/org/utgenome/json/JSONNull.java $ 
 // $Author: leo $
 //--------------------------------------
 package org.xerial.json;
 
-public class JSONBoolean extends JSONValueBase {
-	
-	private boolean _value;
-	
-	public JSONBoolean(boolean b)
-	{
-		this._value = b; 
-	}
-	
-	public JSONBoolean(String text)
-    {
-	    if(text.equals("true"))
-	        this._value = true;
-	    else
-	        this._value = false;
+public class JSONNull extends JSONValueBase
+{
+
+    public final static JSONNull NULL = new JSONNull();
+
+    private JSONNull() {}
+
+    @Override
+    public String toString() {
+        return "null";
     }
 
-    public boolean getValue()
-	{
-		return _value;
-	}
-	
-	public String toString() 
-	{
-		return _value ? "true" : "false"; 
-	}
-	
-	@Override
-	public boolean equals(Object o) {
-		if(!(o instanceof JSONBoolean))
-			return false;
-		
-		return getValue() == ((JSONBoolean) o).getValue();
-	}
-	
-	@Override
-	public JSONBoolean getJSONBoolean() {
-		return this;
-	}
+    @Override
+    public JSONNull getJSONNull() {
+        return this;
+    }
 
-    public JSONValueType getValueType()
-    {
-        return JSONValueType.Boolean;
+    public JSONValueType getValueType() {
+        return JSONValueType.Null;
     }
 }
-
-
-
-

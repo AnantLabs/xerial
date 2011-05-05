@@ -159,7 +159,7 @@ public class JSONUtil
 
     public static JSONValue toJSONValue(Object value) throws JSONException {
         if (value == null)
-            return new JSONNull();
+            return JSONNull.NULL;
 
         if (value instanceof JSONValue)
             return (JSONValue) value;
@@ -172,7 +172,7 @@ public class JSONUtil
         else if (value instanceof Double)
             return new JSONDouble((Double) value);
         else if (value instanceof Boolean)
-            return new JSONBoolean((Boolean) value);
+            return JSONBoolean.toJSONBoolean(((Boolean) value).booleanValue());
         else if (value instanceof Float)
             return new JSONDouble((Float) value);
         else
@@ -184,7 +184,7 @@ public class JSONUtil
     public static JSONValue parseJSON(String jsonObjectOrArray) throws JSONException {
         String json = jsonObjectOrArray.trim();
         if (json.startsWith("{")) {
-            return new JSONObject(json);
+            return JSONObject.parse(json);
         }
         else if (json.startsWith("[")) {
             return new JSONArray(json);

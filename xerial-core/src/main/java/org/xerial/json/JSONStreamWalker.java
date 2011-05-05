@@ -14,35 +14,35 @@
  *  limitations under the License.
  *--------------------------------------------------------------------------*/
 //--------------------------------------
-// XerialJ Project
+// XerialJ
 //
-// JSONNull.java
-// Since: Apr 4, 2007
+// JSONStreamWalker.java
+// Since: Dec 19, 2007 8:08:32 PM
 //
-// $URL: http://dev.utgenome.org/svn/utgb/trunk/common/src/org/utgenome/json/JSONNull.java $ 
-// $Author: leo $
+// $URL$
+// $Author$
 //--------------------------------------
 package org.xerial.json;
 
-public class JSONNull extends JSONValueBase {
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Reader;
 
-	
-	public String toString()
-	{
-		return "null";
-	}
-	
-	@Override
-	public JSONNull getJSONNull() {
-		return this;
-	}
+import org.xerial.util.tree.TreeWalkerImpl;
 
-    public JSONValueType getValueType()
-    {
-        return JSONValueType.Null;
+/**
+ * A walker that traverses JSON streams
+ * 
+ * @author leo
+ * 
+ */
+public class JSONStreamWalker extends TreeWalkerImpl {
+    public JSONStreamWalker(Reader jsonStream) throws IOException {
+        super(new JSONStreamReader(jsonStream));
     }
+
+    public JSONStreamWalker(InputStream jsonStream) throws IOException {
+        super(new JSONStreamReader(jsonStream));
+    }
+
 }
-
-
-
-

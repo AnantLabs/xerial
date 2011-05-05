@@ -1,5 +1,5 @@
 /*--------------------------------------------------------------------------
- *  Copyright 2007 Taro L. Saito
+ *  Copyright 2011 Taro L. Saito
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -16,30 +16,19 @@
 //--------------------------------------
 // XerialJ
 //
-// JSONStreamWalker.java
-// Since: Dec 19, 2007 8:08:32 PM
+// JSONToken.java
+// Since: 2011/05/03 9:55:38
 //
-// $URL$
-// $Author$
 //--------------------------------------
-package org.xerial.json;
-
-import java.io.IOException;
-import java.io.Reader;
-
-import org.xerial.util.tree.TreeWalkerImpl;
+package org.xerial.json.impl;
 
 /**
- * A walker that traverses JSON streams
+ * Token types used in lexer
  * 
  * @author leo
  * 
  */
-public class JSONStreamWalker extends TreeWalkerImpl
-{
-    public JSONStreamWalker(Reader jsonStream) throws IOException
-    {
-        super(new JSONStreamReader(jsonStream));
-    }
+public enum JSONToken {
+    LBrace, RBrace, LBracket, RBracket, Colon, Comma, True, False, Null, String, Integer, Double
 
 }
